@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const eventParam = urlParams.get('event');
     const dateParam = urlParams.get('tgl');
 
-    // Menerapkan parameter URL jika ada
+    // Menerapkan parameter URL jika ada (saat donatur membuka link)
     if (nameParam) {
         document.getElementById('donorName').textContent = nameParam;
         document.getElementById('inputName').value = nameParam;
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Update manual via form control panel
+// Update manual via form control panel (saat klien mengedit template)
 function updateLetter() {
     const nameValue = document.getElementById('inputName').value.trim();
     const eventValue = document.getElementById('inputEvent').value.trim();
@@ -42,12 +42,12 @@ function updateLetter() {
 function shareLetter() {
     if (navigator.share) {
         navigator.share({
-            title: 'Surat Ucapan Terima Kasih - Mission and Care',
+            title: 'Surat Apresiasi Tulus - Mission and Care',
             text: 'Terima kasih telah menjadi saluran berkat!',
             url: window.location.href,
         }).catch(() => {});
     } else {
         navigator.clipboard.writeText(window.location.href);
-        alert('Link surat berhasil disalin! Tinggal paste ke WhatsApp donatur.');
+        alert('Link surat berhasil disalin! Anda bisa langsung mengirimkannya via WhatsApp.');
     }
 }
